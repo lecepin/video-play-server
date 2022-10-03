@@ -1,0 +1,2 @@
+/*! @name videojs-rotate-player-plugin @version 1.0.1 @license Apache-2.0 */
+.video-js.vjs-rotate-player-plugin{display:block}.rotate-0 :before{content:'R'}.rotate-90 :before{content:'90°'}.rotate-180 :before{content:'180°'}.rotate-270 :before{content:'270°'}

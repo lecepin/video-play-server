@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./list.js"></script>
+  </head>
+  <body>
+    <table border="1">
+      <thead>
+        <th></th>
+        <th>名称</th>
+        <th>截图</th>
+        <th>时长</th>
+        <th>大小</th>
+        <th>星级</th>
+      </thead>
+      <tbody id="vtbody"></tbody>
+    </table>
+    <script>
+      let vbodyInner = "";
+
+      window.videoList?.map((item, index) => {
+        vbodyInner += `
+          <tr>
+            <td>${index}</td>
+            <td><a href="play.html?v=${item.name}">${item.name}</a></td>
+            <td><img style="max-width:100px;max-height:100px" src="screenshots/${item.image}" /></td>
+            <td>${item.time}</td>
+            <td>${item.sizep}</td>
+            <td>${item.star}</td>
+          </tr>
+        `;
+      });
+      document.getElementById("vtbody").innerHTML = vbodyInner;
+    </script>
+  </body>
+</html>

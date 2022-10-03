@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="video-js.min.css" rel="stylesheet" />
+    <link href="videojs-rotate-player-plugin.css" rel="stylesheet" />
+    <script src="video.min.js"></script>
+    <script src="videojs-rotate-player-plugin.min.js"></script>
+  </head>
+  <body>
+    <div id="box"></div>
+    <script>
+      box.innerHTML = `
+      <video
+        id="my-player"
+        class="video-js vjs-big-play-centered vjs-touch-enabled"
+        controls
+        preload="auto">
+        <source src="./videos/${new URLSearchParams(location.search).get(
+          "v"
+        )}"></source>
+      </video>
+      `;
+
+      const player = videojs(
+        "my-player",
+        { fluid: true, autoplay: true },
+        function onPlayerReady() {}
+      );
+      player.rotatePlayerPlugin();
+
+      player.ready(function () {
+        this.el_.querySelector(".vjs-text-track-display").style.pointerEvents =
+          "auto";
+
+        document
+          .querySelector(".vjs-text-track-display")
+          .addEventListener("dblclick", function (e) {
+            if (player.el_.classList.contains("vjs-touch-enabled")) {
+              const playerWidth = document
+                .querySelector("#my-player")
+                .getBoundingClientRect().width;
+
+              if (0.66 * playerWidth < e.offsetX) {
+                player.currentTime(player.currentTime() + 10);
+              } else if (e.offsetX < 0.33 * playerWidth) {
+                player.currentTime(
+                  player.currentTime() - 10 < 0 ? 0 : player.currentTime() - 10
+                );
+              } else {
+                if (player.paused()) {
+                  player.play();
+                } else {
+                  player.pause();
+                }
+              }
+            }
+          });
+      });
+    </script>
+  </body>
+</html>

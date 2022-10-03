@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "scripts": {
+    "start": "http-server -p 8000",
+    "read": "node ./scripts/read.js",
+    "preinstall": "node ./scripts/preinstall.js"
+  }
+}
