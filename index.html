@@ -26,7 +26,7 @@
         vbodyInner += `
           <tr>
             <td>${index}</td>
-            <td><a href="play.html?v=${item.name}">${item.name}</a></td>
+            <td><a href="play.html?v=${encodeURIComponent(item.name)}">${item.name}</a></td>
             <td><img style="max-width:100px;max-height:100px" src="screenshots/${item.image}" /></td>
             <td>${item.time}</td>
             <td>${item.sizep}</td>
