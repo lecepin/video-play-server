@@ -5,6 +5,7 @@
   "scripts": {
     "start": "http-server -p 8000",
     "read": "node ./scripts/read.js",
+    "read-dy": "node ./scripts/read-dy.js",
     "preinstall": "node ./scripts/preinstall.js"
   }
 }
